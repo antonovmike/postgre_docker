@@ -2,6 +2,12 @@ https://rust-lang-nursery.github.io/rust-cookbook/database/postgres.html
 
 https://tms-dev-blog.com/postgresql-database-with-rust-how-to/
 
+create_db.rs
+
+insert.rs
+
+print_sorted.rs
+
 ## Start and run
 
 You have to have docker and docker-compose installed to be able to use the docker-compose.yml.
