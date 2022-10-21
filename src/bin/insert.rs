@@ -8,10 +8,16 @@ use postgres::{Client, NoTls, Error};
 // }
 
 fn main() -> Result<(), Error> {
-    let mut client = Client::connect("postgresql://dboperator:operatorpass123@localhost:5243/postgres", NoTls)?;
+    let mut client = Client::connect(
+        "postgresql://dboperator:operatorpass123@localhost:5243/postgres", NoTls
+    )?;
+    
+    // client.execute(
+    //     "INSERT INTO b_store VALUES (1, 'sport', 'helmet', 202)", &[]
+    // )?;
     
     client.execute(
-        "INSERT INTO b_store VALUES (1, 'sport', 'helmet', 202)", &[]
+        "COPY b_store FROM 'b_store.txt';", &[]
     )?;
 
     Ok(())
