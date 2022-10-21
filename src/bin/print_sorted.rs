@@ -1,31 +1,32 @@
 use postgres::{Client, NoTls, Error};
 
-struct Nation {
-    country: String,
-    count: i64,
+struct Sorted {
+    catalogue: String,
+    id: i64,
 }
 
 fn main() -> Result<(), Error> {
     let mut client = Client::connect("postgresql://dboperator:operatorpass123@localhost:5243/postgres", NoTls)?;
     
     for row in client.query 
-    ("SELECT country, COUNT(country) AS count 
-    FROM author GROUP BY country ORDER BY count DESC", &[])? {
+    ("SELECT * FROM b_store", &[])? {
         
-        let (country, count) : (Option<String>, Option<i64>) 
+        let (item, id) : (Option<String>, Option<i64>) 
         = (row.get (0), row.get (1));
         
-        if country.is_some () && count.is_some () {
+        if item.is_some () && id.is_some () {
 
-            let nation = Nation{
-                country: country.unwrap(),
-                count: count.unwrap(),
+            let sorted_db = Sorted {
+                catalogue: item.unwrap(),
+                id: id.unwrap(),
         };
-            println!("{} {}", nation.country, nation.count);
+            println!("{} {}", sorted_db.catalogue, sorted_db.id);
             
         }
     }
     
+    // let sorted = client.query("SELECT * FROM b_store", &[]);
+    // println!("{:?}", sorted);
     Ok(())
 
 }
