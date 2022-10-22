@@ -2,6 +2,8 @@ https://rust-lang-nursery.github.io/rust-cookbook/database/postgres.html
 
 https://tms-dev-blog.com/postgresql-database-with-rust-how-to/
 
+https://docs.rs/sqlx/0.6.2/sqlx/postgres/index.html
+
 create_db.rs
 
 insert.rs

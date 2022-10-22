@@ -12,13 +12,13 @@ fn main() -> Result<(), Error> {
         "postgresql://dboperator:operatorpass123@localhost:5243/postgres", NoTls
     )?;
     
-    // client.execute(
-    //     "INSERT INTO b_store VALUES (1, 'sport', 'helmet', 202)", &[]
-    // )?;
-    
     client.execute(
-        "COPY b_store FROM 'b_store.txt';", &[]
+        "INSERT INTO b_store VALUES (1, 'sport', 'helmet', 202)", &[]
     )?;
+    
+    // client.execute(
+    //     "COPY b_store FROM 'add/b_store.txt';", &[]
+    // )?;
 
     Ok(())
 
