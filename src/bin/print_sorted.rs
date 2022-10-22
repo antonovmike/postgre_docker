@@ -10,7 +10,6 @@ fn main() -> Result<(), Error> {
         "postgresql://dboperator:operatorpass123@localhost:5243/postgres", NoTls
     )?;
     
-    // for row in client.query("SELECT (item, price) FROM b_store", &[])? {
     for row in client.query 
     ("SELECT item, COUNT(item) AS goods 
     FROM b_store GROUP BY id ORDER BY goods DESC", &[])? {
@@ -26,8 +25,5 @@ fn main() -> Result<(), Error> {
         }
     }
     
-    // let sorted = client.query("SELECT * FROM b_store", &[]);
-    // println!("{:?}", sorted);
     Ok(())
-
 }

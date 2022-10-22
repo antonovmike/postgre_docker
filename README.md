@@ -20,6 +20,7 @@ To start the PostgreSQL instance:
 sudo docker ps
 sudo docker-compose up -d
 sudo docker-compose up
+sudo docker exec -ti postgre_docker_postgres_1 bash
 ```
 
 To start the program:
